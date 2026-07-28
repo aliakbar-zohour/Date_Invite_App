@@ -1,9 +1,10 @@
 import { Button } from "@/components/invite/ui/Button";
+import type { ReactNode } from "react";
 
 type StepNavProps = {
   onBack?: () => void;
   onNext: () => void;
-  nextLabel: string;
+  nextLabel: ReactNode;
   nextDisabled?: boolean;
   showBack?: boolean;
 };

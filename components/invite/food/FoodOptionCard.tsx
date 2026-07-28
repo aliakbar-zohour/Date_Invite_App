@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Emoji } from "@/components/invite/ui/Emoji";
 import type { FoodOption } from "@/lib/invite/types";
 
 type FoodOptionCardProps = {
@@ -22,7 +23,9 @@ export function FoodOptionCard({
       onClick={() => onSelect(option)}
       aria-pressed={selected}
     >
-      <span className="food-emoji">{option.emoji}</span>
+      <span className="food-emoji">
+        <Emoji emoji={option.emoji} size="1.45rem" label={option.label} />
+      </span>
       <span className="food-label">{option.label}</span>
     </motion.button>
   );

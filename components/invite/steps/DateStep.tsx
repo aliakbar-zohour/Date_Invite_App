@@ -1,6 +1,7 @@
 "use client";
 
 import { PersianCalendar } from "@/components/invite/calendar/PersianCalendar";
+import { EmojiText } from "@/components/invite/ui/EmojiText";
 import { StepHeader } from "@/components/invite/ui/StepHeader";
 import { StepNav } from "@/components/invite/ui/StepNav";
 import { STEP_META } from "@/lib/invite/constants";
@@ -19,13 +20,13 @@ export function DateStep({ value, onChange, onNext }: DateStepProps) {
     <>
       <StepHeader
         title={meta.title}
-        subtitle={meta.subtitle}
+        subtitle={<EmojiText text={meta.subtitle} />}
       />
       <PersianCalendar value={value} onChange={onChange} />
       <StepNav
         showBack={false}
         onNext={onNext}
-        nextLabel="بعدی 💫"
+        nextLabel={<EmojiText text="بعدی 💫" />}
         nextDisabled={!value}
       />
     </>

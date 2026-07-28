@@ -1,6 +1,7 @@
 "use client";
 
 import { FoodGrid } from "@/components/invite/food/FoodGrid";
+import { EmojiText } from "@/components/invite/ui/EmojiText";
 import { StepHeader } from "@/components/invite/ui/StepHeader";
 import { StepNav } from "@/components/invite/ui/StepNav";
 import { STEP_META } from "@/lib/invite/constants";
@@ -25,13 +26,13 @@ export function FoodStep({
     <>
       <StepHeader
         title={meta.title}
-        subtitle={meta.subtitle}
+        subtitle={<EmojiText text={meta.subtitle} />}
       />
       <FoodGrid value={value} onChange={onChange} />
       <StepNav
         onBack={onBack}
         onNext={onNext}
-        nextLabel="تمومه 💝"
+        nextLabel={<EmojiText text="تمومه 💝" emojiSize="1.1em" />}
         nextDisabled={!value}
       />
     </>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Emoji } from "@/components/invite/ui/Emoji";
 import { CELEBRATION_EMOJIS } from "@/lib/invite/constants";
 
 export function Confetti() {
@@ -25,7 +26,7 @@ export function Confetti() {
             repeatDelay: 0.6,
           }}
         >
-          {emoji}
+          <Emoji emoji={emoji} size="1.25rem" />
         </motion.span>
       ))}
     </div>

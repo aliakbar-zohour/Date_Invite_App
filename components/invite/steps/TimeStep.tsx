@@ -1,6 +1,7 @@
 "use client";
 
 import { TimePicker } from "@/components/invite/time/TimePicker";
+import { EmojiText } from "@/components/invite/ui/EmojiText";
 import { StepHeader } from "@/components/invite/ui/StepHeader";
 import { StepNav } from "@/components/invite/ui/StepNav";
 import { STEP_META } from "@/lib/invite/constants";
@@ -28,7 +29,7 @@ export function TimeStep({
     <>
       <StepHeader
         title={meta.title}
-        subtitle={meta.subtitle}
+        subtitle={<EmojiText text={meta.subtitle} />}
       />
       <TimePicker
         hour={hour}
@@ -36,7 +37,11 @@ export function TimeStep({
         onHourChange={onHourChange}
         onMinuteChange={onMinuteChange}
       />
-      <StepNav onBack={onBack} onNext={onNext} nextLabel="بعدی 💫" />
+      <StepNav
+        onBack={onBack}
+        onNext={onNext}
+        nextLabel={<EmojiText text="بعدی 💫" />}
+      />
     </>
   );
 }
