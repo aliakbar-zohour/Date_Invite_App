@@ -12,20 +12,32 @@ type StepIndicatorProps = {
 export function StepIndicator({ currentStep }: StepIndicatorProps) {
   const progressIndex = getStepProgressIndex(currentStep);
   const isCelebrate = currentStep === "celebrate";
+  const total = INDICATOR_STEPS.length;
+  const filledRatio = isCelebrate
+    ? 1
+    : progressIndex / Math.max(total - 1, 1);
 
   return (
     <nav className="step-indicator" aria-label="پیشرفت مراحل">
-      <ol className="step-indicator-track">
+      <div className="step-indicator-line" aria-hidden>
+        <motion.span
+          className="step-indicator-progress"
+          initial={false}
+          animate={{ scaleX: Math.min(filledRatio, 1) }}
+          transition={{ type: "spring", stiffness: 280, damping: 28 }}
+        />
+      </div>
+
+      <ol className="step-indicator-nodes">
         {INDICATOR_STEPS.map((step, index) => {
           const isComplete = isCelebrate || index < progressIndex;
           const isActive = !isCelebrate && index === progressIndex;
-          const shouldFill = isComplete || isActive;
 
           return (
             <li
               key={step}
               className={[
-                "step-indicator-segment",
+                "step-indicator-node",
                 isComplete ? "is-complete" : "",
                 isActive ? "is-active" : "",
               ]
@@ -33,19 +45,15 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
                 .join(" ")}
               aria-current={isActive ? "step" : undefined}
             >
-              <span className="step-indicator-rail">
-                <motion.span
-                  className="step-indicator-fill"
-                  initial={false}
-                  animate={{ scaleX: shouldFill ? 1 : 0 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 26,
-                    delay: isCelebrate ? index * 0.1 : isActive ? 0.05 : 0,
-                  }}
-                />
-              </span>
+              <motion.span
+                className="step-indicator-dot"
+                initial={false}
+                animate={{
+                  scale: isActive ? 1.15 : isComplete ? 1 : 0.85,
+                  opacity: isActive || isComplete ? 1 : 0.35,
+                }}
+                transition={{ type: "spring", stiffness: 400, damping: 22 }}
+              />
             </li>
           );
         })}

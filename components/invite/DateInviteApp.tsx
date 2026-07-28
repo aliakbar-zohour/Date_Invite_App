@@ -16,6 +16,8 @@ export default function DateInviteApp() {
 
   return (
     <InviteShell>
+      <StepIndicator currentStep={flow.step} />
+
       <div className="invite-body">
         <AnimatePresence mode="wait">
           {flow.step === "ask" ? (
@@ -80,8 +82,6 @@ export default function DateInviteApp() {
           ) : null}
         </AnimatePresence>
       </div>
-
-      <StepIndicator currentStep={flow.step} />
     </InviteShell>
   );
 }
