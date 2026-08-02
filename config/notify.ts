@@ -40,24 +40,16 @@ export const notifyConfig = {
    * Uses Telegram HTML parse mode.
    */
   messageTemplate: `
-💕 <b>خبر خوب از دعوت‌نامه!</b>
+💌 <b>دعوت‌نامه قبول شد</b>
 
-کسی گفت <b>بله</b> ✨
-قرار قطعی شد — جزئیاتش اینه:
+فرد مورد نظرت جواب <b>بله</b> داد
+و قرارتون رسمی شد ✨
 
-━━━━━━━━━━━━━━
-📅 <b>تاریخ</b>
-{{date}}
+<blockquote>📅  {{date}}
+⏰  {{time}}
+{{foodEmoji}}  {{food}}</blockquote>
 
-⏰ <b>ساعت</b>
-{{time}}
-
-🍽️ <b>غذا</b>
-{{foodEmoji}} {{food}}
-━━━━━━━━━━━━━━
-
-برو خودتو آماده کن 🥰
-یه قرار قشنگ منتظرته 💖
+حالا فقط بمونه یه قرار قشنگ 💕
 `.trim(),
 } as const;
 
