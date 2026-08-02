@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Confetti } from "@/components/invite/celebrate/Confetti";
 import { DateSummary } from "@/components/invite/celebrate/DateSummary";
 import { Emoji } from "@/components/invite/ui/Emoji";
 import { StepHeader } from "@/components/invite/ui/StepHeader";
@@ -59,7 +58,6 @@ export function CelebrateStep({
 
   return (
     <>
-      <Confetti />
       <motion.div
         className="hero-emoji big"
         animate={{ scale: [1, 1.15, 1], rotate: [0, -8, 8, 0] }}

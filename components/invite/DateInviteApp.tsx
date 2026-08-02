@@ -13,9 +13,10 @@ import { useInviteFlow } from "@/hooks/useInviteFlow";
 
 export default function DateInviteApp() {
   const flow = useInviteFlow();
+  const celebrating = flow.step === "celebrate";
 
   return (
-    <InviteShell>
+    <InviteShell celebrating={celebrating}>
       <StepIndicator currentStep={flow.step} />
 
       <div className="invite-body">

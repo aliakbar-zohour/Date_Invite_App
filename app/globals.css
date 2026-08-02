@@ -337,6 +337,14 @@ button {
     bottom: auto;
     top: 20%;
   }
+
+  .celebration-fireworks {
+    display: none;
+  }
+
+  .invite-card.is-focused {
+    transform: none !important;
+  }
 }
 
 .invite-card {
@@ -357,6 +365,55 @@ button {
   display: flex;
   flex-direction: column;
   overflow: visible;
+  transition:
+    box-shadow 0.55s ease,
+    border-color 0.55s ease,
+    background 0.55s ease;
+}
+
+.invite-shell.is-celebrating .invite-atmosphere {
+  opacity: 0.35;
+  filter: saturate(0.7) brightness(0.55);
+  transition: opacity 0.55s ease, filter 0.55s ease;
+}
+
+.celebration-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.celebration-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 55% 48% at 50% 48%,
+      rgba(28, 8, 16, 0.35) 0%,
+      rgba(8, 2, 8, 0.82) 58%,
+      rgba(4, 1, 6, 0.92) 100%
+    );
+}
+
+.celebration-fireworks {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.invite-card.is-focused {
+  z-index: 3;
+  background: rgba(255, 252, 253, 0.98);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.55),
+    0 28px 70px rgba(0, 0, 0, 0.45),
+    0 0 48px rgba(232, 90, 113, 0.28),
+    0 0 120px rgba(255, 143, 163, 0.18);
 }
 
 .invite-body {
@@ -763,20 +820,6 @@ button {
 .celebrate {
   justify-content: flex-start;
   position: relative;
-}
-
-.confetti {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.confetti-piece {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  font-size: 1.15rem;
 }
 
 .celebrate-hearts {
