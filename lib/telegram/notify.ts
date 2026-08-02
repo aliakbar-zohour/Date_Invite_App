@@ -35,7 +35,9 @@ export async function sendTelegramMessage(text: string): Promise<void> {
   const chatId = String(notifyConfig.telegram.chatId).trim();
 
   if (!token) {
-    throw new Error("TELEGRAM_BOT_TOKEN is missing in .env.local");
+    throw new Error(
+      "TELEGRAM_BOT_TOKEN is missing — set it in .env.local (local) or Vercel Environment Variables (production)",
+    );
   }
   if (!chatId) {
     throw new Error(
